@@ -1,0 +1,20 @@
+<h1>User - <%= @user.name %></h1>
+<div><%= @user.id %></div>
+<div><%= @user.name %></div>
+
+<%= link_to 'All posts by this user', user_posts_path(@user) %>
+
+<h2>Add a post by this user:</h2>
+<%= form_with model: [ @user, @user.posts.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
