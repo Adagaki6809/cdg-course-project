@@ -1,6 +1,6 @@
 <h1>Users</h1>
 <%= link_to 'New', new_user_path %>
-<table>
+<table class="table table-striped table-dark" >
   <thead>
     <tr>
       <th>Id</th>
@@ -15,7 +15,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= user.name %></td>
+        <td><%= link_to user.name, user_path(user) %></td>
         <td>
           <% user.posts.each do |post| %>
             <p>
