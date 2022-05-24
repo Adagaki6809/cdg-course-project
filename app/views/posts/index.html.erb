@@ -5,9 +5,10 @@
       <%= link_to post.user.name, user_path(post.user) %>
       <br>
       <% if post.image.attached? %>
-          <%= image_tag post.image, class: 'post-image' %>
+          <a href="<%= user_post_path(post.user, post) %>"> <%= image_tag post.image, class: 'post-image' %> </a>
       <% end %>
       <p>Created: <%= post.created_at %>  Updated: <%= post.updated_at %></p>
+      <hr>
     </div>
   <% end %>
 </div>

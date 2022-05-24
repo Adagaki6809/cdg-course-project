@@ -1,19 +1,11 @@
 <h1>User - <%= @user.name %></h1>
 <div>
-  <p>
-    <%= link_to 'All posts by this user', user_posts_path(@user) %>
-  </p>
+  <%= link_to 'All posts by this user', user_posts_path(@user) %>
+  <br>
+  <%= link_to 'All users', users_path %>
   <br>
   <h2>Add a post by this user:</h2>
   <%= form_with model: [ @user, @user.posts.build ] do |form| %>
-    <p>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
-    </p>
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </p>
     <p>
       <div>
         <%= form.label :image %>

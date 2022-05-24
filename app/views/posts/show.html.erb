@@ -1,4 +1,29 @@
 <h1>Post</h1>
-<div><%= @post.title %></div>
-<div><%= @post.body %></div>
+<div class="posts-area" >
+  <div class="overflow-auto post" >
+    <%= link_to @post.user.name, user_path(@post.user) %>
+    <br>
+    <% if @post.image.attached? %>
+        <%= image_tag @post.image, class: 'post-image' %>
+    <% end %>
+    <p>Created: <%= @post.created_at %>  Updated: <%= @post.updated_at %></p>
+  </div>
+</div>
+
+<div class="comments-area">
+  <% @post.comments.each do |comment| %>
+    <div class="overflow-auto comment" >
+      <span><b><%= comment.user.name %></b>: <%= comment.content %></span>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: [ @post.user, @post, @post.comments.build ] do |form| %>
+    <div>
+      <%= form.text_field :content %>
+    </div>
+    <%= form.submit 'Add a comment' %>
+  <% end %>
+</div>
 <%= link_to 'Back', user_posts_path %>
