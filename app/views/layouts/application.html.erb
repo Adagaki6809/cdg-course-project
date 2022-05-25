@@ -15,7 +15,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="user">
-      <% if current_user %>
+      <% if !current_user.nil? %>
         <div class="user-logged-in">
           <p>You signed in as</p>&nbsp;<%= link_to current_user.name, user_path(current_user) %>
         </div>

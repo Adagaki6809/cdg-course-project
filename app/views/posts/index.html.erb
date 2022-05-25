@@ -1,22 +1,31 @@
-<% if current_user.id == @posts.first.user.id %>
+<% if @posts.empty? && params[:user_id].to_i == current_user.id %>
   <h2>Add a post</h2>
-  <%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
-      <%= form.file_field :image %>
-      <%= form.submit %>
-  <% end %>
-<% end %>
+    <%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
+        <%= form.file_field :image %>
+        <%= form.submit %>
+    <% end %>
 
-<h1>Posts by <%= @posts.first.user.name %></h1>
-<div class="posts-area" >
-  <% @posts.each do |post| %>
-    <div class="overflow-auto post" >
-      <%= link_to post.user.name, user_path(post.user) %>
-      <br>
-      <% if post.image.attached? %>
-          <a href="<%= user_post_path(post.user, post) %>"> <%= image_tag post.image, class: 'post-image' %> </a>
-      <% end %>
-      <p>Created: <%= post.created_at %>  Updated: <%= post.updated_at %></p>
-      <hr>
-    </div>
+<% else %>
+  <% if current_user.id == @posts.first.user.id %>
+    <h2>Add a post</h2>
+    <%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
+        <%= form.file_field :image %>
+        <%= form.submit %>
+    <% end %>
   <% end %>
-</div>
+
+  <h1>Posts by <%= @posts.first.user.name %></h1>
+  <div class="posts-area" >
+    <% @posts.each do |post| %>
+      <div class="overflow-auto post" >
+        <%= link_to post.user.name, user_path(post.user) %>
+        <br>
+        <% if post.image.attached? %>
+            <a href="<%= user_post_path(post.user, post) %>"> <%= image_tag post.image, class: 'post-image' %> </a>
+        <% end %>
+        <p>Created: <%= post.created_at %>  Updated: <%= post.updated_at %></p>
+        <hr>
+      </div>
+    <% end %>
+  </div>
+<% end %>
