@@ -9,11 +9,22 @@
     
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <!--<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css"> -->
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="user">
+      <% if current_user %>
+        <div class="user-logged-in">
+          <p>You signed in as</p>&nbsp;<%= link_to current_user.name, user_path(current_user) %>
+        </div>
+        <div class="logout">
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, data: {turbo: false} %>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to 'All users', users_path %>
     <%= yield %>
   </body>
 </html>

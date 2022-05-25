@@ -1,4 +1,12 @@
-<h1>Posts</h1>
+<% if current_user.id == @posts.first.user.id %>
+  <h2>Add a post</h2>
+  <%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
+      <%= form.file_field :image %>
+      <%= form.submit %>
+  <% end %>
+<% end %>
+
+<h1>Posts by <%= @posts.first.user.name %></h1>
 <div class="posts-area" >
   <% @posts.each do |post| %>
     <div class="overflow-auto post" >

@@ -19,7 +19,7 @@
 </div>
 
 <div>
-  <%= form_with model: [ @post.user, @post, @post.comments.build ] do |form| %>
+  <%= form_with model: [ current_user, @post, @post.comments.build ] do |form| %>
     <div>
       <%= form.text_field :content %>
     </div>

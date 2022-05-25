@@ -15,3 +15,23 @@
 .comment {
   word-break: break-word;
 }
+.notice {
+  background-color: rgb(93, 247, 93);
+}
+.alert {
+  background-color: rgb(224, 96, 96);
+}
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 720px;
+  justify-content: space-between;
+}
+.user-logged-in {
+  display: flex;
+  align-items: center;
+}
+.logout {
+  
+}
