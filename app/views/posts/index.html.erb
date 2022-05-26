@@ -1,29 +1,29 @@
 <% if @posts.empty? && params[:user_id].to_i == current_user.id %>
-  <h2>Add a post</h2>
-    <%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
-        <%= form.file_field :image %>
-        <%= form.submit %>
-    <% end %>
-
+  <%= render "add_post" %>
 <% else %>
   <% if current_user.id == @posts.first.user.id %>
-    <h2>Add a post</h2>
-    <%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
-        <%= form.file_field :image %>
-        <%= form.submit %>
-    <% end %>
+    <%= render "add_post" %>
   <% end %>
-
   <h1>Posts by <%= @posts.first.user.name %></h1>
   <div class="posts-area" >
     <% @posts.each do |post| %>
       <div class="overflow-auto post" >
         <%= link_to post.user.name, user_path(post.user) %>
-        <br>
-        <% if post.image.attached? %>
-            <a href="<%= user_post_path(post.user, post) %>"> <%= image_tag post.image, class: 'post-image' %> </a>
-        <% end %>
-        <p>Created: <%= post.created_at %>  Updated: <%= post.updated_at %></p>
+        <a href="<%= user_post_path(post.user, post) %>">
+          <%= image_tag post.image, class: 'post-image' %>
+        </a>
+        <div class="post-footer">
+          <div class="likes">
+            <div class="like-form">
+              <%= form_with model: [ current_user, post, post.likes.build ] do |form| %>
+                <%= form.submit '', type: :image, src: image_path('like.png'), class: 'like-image' %>
+              <% end %>
+            </div>
+            &nbsp;
+            <div class="like-counter"><%= post.likes.count %></div>
+          </div>
+          <p>Posted: <%= post.created_at.strftime('%H:%M %d %b %Y') %></p>
+        </div>
         <hr>
       </div>
     <% end %>

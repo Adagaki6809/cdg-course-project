@@ -23,7 +23,6 @@
 }
 .user {
   display: flex;
-  flex-direction: row;
   align-items: center;
   width: 720px;
   justify-content: space-between;
@@ -34,4 +33,26 @@
 }
 .logout {
   
+}
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.likes {
+  display: flex;
+  align-items: center;
+}
+.like-form {
+  width: 2rem;
+  height: 2rem;
+}
+.like-counter {
+  font-size: 2rem;
+}
+.like-image {
+  border: 0;
+  margin-bottom: 0;
+  padding: 0;
+  width: 100%;
 }

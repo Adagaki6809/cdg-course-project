@@ -1,0 +1,5 @@
+<h2>Add a post</h2>
+<%= form_with model: [ current_user, current_user.posts.build ] do |form| %>
+  <%= form.file_field :image %>
+  <%= form.submit %>
+<% end %>

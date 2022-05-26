@@ -3,10 +3,8 @@
   <div class="overflow-auto post" >
     <%= link_to @post.user.name, user_path(@post.user) %>
     <br>
-    <% if @post.image.attached? %>
-        <%= image_tag @post.image, class: 'post-image' %>
-    <% end %>
-    <p>Created: <%= @post.created_at %>  Updated: <%= @post.updated_at %></p>
+    <%= image_tag @post.image, class: 'post-image' %>
+    <%= render "post_footer" %>
   </div>
 </div>
 
