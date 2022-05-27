@@ -1,10 +1,22 @@
-<% if @posts.empty? && params[:user_id].to_i == current_user.id %>
+<% user = User.find(params[:user_id]) %>
+<% if user.id == current_user.id %>
   <%= render "add_post" %>
-<% else %>
-  <% if current_user.id == @posts.first.user.id %>
-    <%= render "add_post" %>
-  <% end %>
-  <h1>Posts by <%= @posts.first.user.name %></h1>
+<% end %>
+
+<% if @posts.any? %>  
+  <h1>Posts by <%= user.name %></h1>
+  <div id="follow_form">
+    <% if current_user.following?(user) %>
+      <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }) do |f| %>
+        <%= f.submit "Unfollow" %>
+      <% end %>
+    <% elsif current_user.id != user.id %>
+      <%= form_for(current_user.active_relationships.build) do |f| %>
+        <div><%= hidden_field_tag :followed_id, user.id %></div>
+        <%= f.submit "Follow" %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="posts-area" >
     <% @posts.each do |post| %>
       <div class="overflow-auto post" >
@@ -28,4 +40,6 @@
       </div>
     <% end %>
   </div>
+<% else %>
+  <h1> <%= user.name %> has no posts </h1>
 <% end %>
