@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# UsersController
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -7,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to user_posts_path(@user)
   end
-  
+
   def new
     @user = User.new
   end
@@ -22,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name)
-    end
+
+  def user_params
+    params.require(:user).permit(:name)
+  end
 end

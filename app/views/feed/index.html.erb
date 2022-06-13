@@ -1,0 +1,28 @@
+<% if @feed.any? %>  
+  <h1>Feed of <%= current_user.name %></h1>
+  <div class="posts-area" >
+    <% @feed.each do |post| %>
+      <div class="overflow-auto post" >
+        <%= link_to post.user.name, user_path(post.user) %>
+        <a href="<%= user_post_path(post.user, post) %>">
+          <%= image_tag post.image, class: 'post-image' %>
+        </a>
+        <div class="post-footer">
+          <div class="likes">
+            <div class="like-form">
+              <%= form_with model: [ current_user, post, post.likes.build ] do |form| %>
+                <%= form.submit '', type: :image, src: image_path('like.png'), class: 'like-image' %>
+              <% end %>
+            </div>
+            &nbsp;
+            <div class="like-counter"><%= post.likes.count %></div>
+          </div>
+          <p>Posted: <%= post.created_at.strftime('%H:%M %d %b %Y') %></p>
+        </div>
+        <hr>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h1> <%= current_user.name %>'s feed is empty </h1>
+<% end %>

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# CommentsController
 class CommentsController < ApplicationController
   def index
     @comments = Comment.all
@@ -6,7 +9,7 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
   end
-  
+
   def new
     @comment = Comment.new
   end
@@ -20,7 +23,8 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end

@@ -18,6 +18,8 @@
       <% if !current_user.nil? %>
         <div class="user-logged-in">
           <p>You signed in as</p>&nbsp;<%= link_to current_user.name, user_path(current_user) %>
+          &nbsp;&nbsp;
+          <%= link_to 'My Feed', user_feed_index_path(current_user.id) %>
         </div>
         <div class="logout">
           <%= button_to "Logout", destroy_user_session_path, method: :delete, data: {turbo: false} %>
@@ -26,14 +28,5 @@
     </div>
     <%= link_to 'All users', users_path %>
     <%= yield %>
-    <script>
-      /*
-      window.onload = function() {
-        if ('scrollRestoration' in history) {
-          history.scrollRestoration = 'auto';
-        }
-      }
-      */
-    </script>
   </body>
 </html>

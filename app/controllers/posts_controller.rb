@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# PostsController
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user).where(:user_id => params[:user_id])
+    @posts = Post.includes(:user).where(user_id: params[:user_id])
   end
 
   def show
@@ -14,7 +17,8 @@ class PostsController < ApplicationController
   end
 
   private
-    def post_params
-      params.require(:post).permit(:image)
-    end
+
+  def post_params
+    params.require(:post).permit(:image)
+  end
 end
