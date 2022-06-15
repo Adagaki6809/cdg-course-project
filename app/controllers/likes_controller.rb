@@ -16,9 +16,9 @@ class LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @likes_from_user = @post.likes.where(user_id: params[:user_id])
+    @likes_from_user = @post.likes.where(user_id: current_user.id)
     if @likes_from_user.empty?
-      @likes_from_user.create({ user_id: params[:user_id], post_id: params[:post_id] })
+      @likes_from_user.create(user_id: current_user.id, post_id: params[:post_id])
     else
       @likes_from_user.first.destroy
     end
