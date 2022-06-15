@@ -1,9 +1,8 @@
-<% user = User.find(params[:user_id]) %>
-<% if user.id == current_user.id %>
-  <%= render "add_post" %>
-<% end %>
-
-<% if @posts.any? %>  
+<% if @posts.any? %>
+  <% user = @posts.first.user %>
+  <% if @posts.first.author?(current_user) %>
+    <%= render "add_post" %>
+  <% end %>
   <h1>Posts by <%= user.name %></h1>
   <div id="follow_form">
     <% if current_user.following?(user) %>
