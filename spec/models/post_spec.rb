@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  subject { build(:post, user: nil) }
+  subject { create(:post) }
 
-  it 'is not valid' do
+  it 'is valid' do
+    is_expected.to be_valid
+  end
+
+  it 'is not valid without image' do
+    subject.image = nil
     is_expected.to be_invalid
   end
 end
