@@ -26,6 +26,23 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe '#show' do
+    subject { process :show, method: :get, params: params }
+
+    let(:params) { { post: attributes_for(:post), user_id: user, id: post } }
+    let(:post) { create :post, user: user }
+
+    it 'shows a post' do
+      subject
+      expect(subject).to render_template :show
+    end
+
+    it 'assigns @post to current user' do
+      subject
+      expect(assigns(:post).user).to eq user
+    end
+  end
+
   describe '#create' do
     subject { process :create, method: :post, params: params }
 
