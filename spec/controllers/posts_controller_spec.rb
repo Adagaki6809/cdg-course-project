@@ -5,8 +5,7 @@ RSpec.describe PostsController, type: :controller do
   before { sign_in user }
   describe '#index' do
     subject { process :index, params: params }
-    let(:params) { { user_id: user.id } }
-    #let(:params2) { { post: attributes_for(:post), user_id: user.id } }
+    let(:params) { { user_id: user } }
     let(:posts) { create_list(:post, 5, user: user) }
     it 'renders the index template' do
       subject
@@ -30,7 +29,7 @@ RSpec.describe PostsController, type: :controller do
   describe '#create' do
     subject { process :create, method: :post, params: params }
 
-    let(:params) { { post: attributes_for(:post), user_id: user.id } }
+    let(:params) { { post: attributes_for(:post), user_id: user } }
     
     it 'creates a post' do
       expect { subject }.to change(Post, :count).by(1)

@@ -40,5 +40,8 @@
     <% end %>
   </div>
 <% else %>
-  <h1> <%= user.name %> has no posts </h1>
+  <h1> <%= User.find(params[:user_id]).name %> has no posts </h1>
+  <% if User.find(params[:user_id]) == current_user %>
+    <%= render "add_post" %>
+  <% end %>
 <% end %>

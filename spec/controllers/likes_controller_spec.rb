@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LikesController, type: :controller do
   let(:user) { create :user }
-  let(:post) { create :post, user: create(:user) }
+  let(:post) { create :post, user: user }
   before do
     sign_in user 
     request.env['HTTP_REFERER'] = 'posts/'
@@ -10,7 +10,7 @@ RSpec.describe LikesController, type: :controller do
 
   describe '#index' do
     subject { process :index, params: params }
-    let(:params) { { user_id: user.id, post_id: post.id } }
+    let(:params) { { user_id: user, post_id: post } }
     let(:likes) { create_list(:like, 5) }
 
     it 'assigns @likes' do
@@ -29,13 +29,15 @@ RSpec.describe LikesController, type: :controller do
 
   describe '#create' do
     subject { process :create, method: :post, params: params }
-
-    let(:params) { { like: attributes_for(:like), user_id: user.id, post_id: post.id } }
+    let(:like) { create(:like, user: user, post: post) }
+    let(:params) { { like: attributes_for(:like), user_id: user, post_id: post } }
 
     it 'creates a like' do
+      expect(assigns(:likes_from_user).nil?).to eq true
       expect(user.likes.count).to eq 0
       expect { subject }.to change(Like, :count).by(1)
       expect(user.likes.count).to eq 1
+      expect(assigns(:likes_from_user).any?).to eq true
     end
 
     it 'redirects to user page' do
@@ -48,11 +50,12 @@ RSpec.describe LikesController, type: :controller do
       expect(assigns(:likes_from_user).first.user).to eq user
     end
 
-    context 'when like was already on post' do
-      it 'deletes the like' do
-        expect(user.likes.count).to eq 0
-        expect { subject }.to change(Like, :count).by(1)
-        expect(user.likes.count).to eq 1
+    context 'when user tries to remove someones like' do
+      let!(:like) { create :like, user: create(:user) }
+      let(:params) { {id: like.id, user_id: user, post_id: post }}
+      it 'does not delete the like' do
+        subject
+        expect { subject }.to_not change(user.likes, :count)
       end
     end
   end

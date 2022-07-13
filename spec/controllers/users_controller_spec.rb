@@ -22,7 +22,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#create' do
-    
+  describe '#new' do
+    subject { process :new }
+    it 'assigns @user' do
+      subject
+      expect(assigns(:user)).to be_a_new User
+    end
   end
 end
