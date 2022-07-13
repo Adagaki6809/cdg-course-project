@@ -50,12 +50,35 @@ RSpec.describe LikesController, type: :controller do
       expect(assigns(:likes_from_user).first.user).to eq user
     end
 
-    context 'when user tries to remove someones like' do
-      let!(:like) { create :like, user: create(:user) }
-      let(:params) { {id: like.id, user_id: user, post_id: post }}
-      it 'does not delete the like' do
-        subject
-        expect { subject }.to_not change(user.likes, :count)
+    context 'when user likes post which is already liked by user' do
+      subject { process :create, method: :post, params: params }
+      let!(:like) { create :like }
+      let(:params) { { like: attributes_for(:like), user_id: user, post_id: post } }
+      before { user.likes.create(user_id: user.id, post_id: post.id) }
+      it 'deletes the like' do
+        expect(user.likes.count).to eq 1
+        expect { subject }.to change(user.likes, :count).by(-1)
+      end
+    end
+
+    context 'when user likes post on posts page' do
+      before { request.env['HTTP_REFERER'] = 'posts/' }
+      it 'creates a like' do
+        expect { subject }.to change(user.likes, :count).by(1)
+      end
+    end
+
+    context 'when user likes post on post page' do
+      before { request.env['HTTP_REFERER'] = 'posts' }
+      it 'creates a like' do
+        expect { subject }.to change(user.likes, :count).by(1)
+      end
+    end
+
+    context 'when user likes post on feed page' do
+      before { request.env['HTTP_REFERER'] = 'feed' }
+      it 'creates a like' do
+        expect { subject }.to change(user.likes, :count).by(1)
       end
     end
   end

@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-07-13T18:22:13+03:00">2022-07-13T18:22:13+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-07-13T19:45:03+03:00">2022-07-13T19:45:03+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  94.83%
+  96.47%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.11
+         2.24
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>387</b> relevant lines,
-    <span class="green"><b>367</b> lines covered</span> and
-    <span class="red"><b>20</b> lines missed. </span>
+    <b>397</b> relevant lines,
+    <span class="green"><b>383</b> lines covered</span> and
+    <span class="red"><b>14</b> lines missed. </span>
     (<span class="green">
-  94.83%
+  96.47%
 </span>
 )
   </div>
@@ -94,12 +94,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#e5e87c0bb4b929076078bcac6b1a5de09428d9ed" class="src_link" title="app/controllers/likes_controller.rb">app/controllers/likes_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">66.67 %</td>
-            <td class="cell--number">33</td>
-            <td class="cell--number">18</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">1.67</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">26</td>
+            <td class="cell--number">14</td>
+            <td class="cell--number">14</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">3.43</td>
             
           </tr>
         
@@ -359,11 +359,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fb9a9bb611a6ef656c7cacef7d2e1e5c9bead669" class="src_link" title="spec/controllers/likes_controller_spec.rb">spec/controllers/likes_controller_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">62</td>
-            <td class="cell--number">41</td>
-            <td class="cell--number">41</td>
+            <td class="cell--number">85</td>
+            <td class="cell--number">55</td>
+            <td class="cell--number">55</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.95</td>
+            <td class="cell--number">2.16</td>
             
           </tr>
         
@@ -429,7 +429,7 @@
             <td class="cell--number">4</td>
             <td class="cell--number">4</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">9.75</td>
+            <td class="cell--number">10.50</td>
             
           </tr>
         
@@ -440,7 +440,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">40.33</td>
+            <td class="cell--number">42.33</td>
             
           </tr>
         
@@ -1077,8 +1077,8 @@
   <div class="header">
     <h3>app/controllers/likes_controller.rb</h3>
     <h4>
-      <span class="red">
-  66.67%
+      <span class="green">
+  100.0%
 </span>
 
       lines covered
@@ -1087,9 +1087,9 @@
     
 
     <div class="t-line-summary">
-      <b>18</b> relevant lines.
-      <span class="green"><b>12</b> lines covered</span> and
-      <span class="red"><b>6</b> lines missed.</span>
+      <b>14</b> relevant lines.
+      <span class="green"><b>14</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -1194,73 +1194,73 @@
 
             
 
-            <code class="ruby">  def show</code>
+            <code class="ruby">  def create</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="10">
-            
-            
-
+          <li class="covered" data-hits="7" data-linenumber="10">
+            <span class="hits">7</span>
             
 
-            <code class="ruby">    @like = Like.find(params[:id])</code>
+            
+
+            <code class="ruby">    @post = Post.find(params[:post_id])</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="11">
-            
-            
-
+          <li class="covered" data-hits="7" data-linenumber="11">
+            <span class="hits">7</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    @likes_from_user = @post.likes.where(user_id: current_user.id)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="12">
-            
-            
-
+          <li class="covered" data-hits="7" data-linenumber="12">
+            <span class="hits">7</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    if @likes_from_user.empty?</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
+          <li class="covered" data-hits="6" data-linenumber="13">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">      @likes_from_user.create(user_id: current_user.id, post_id: params[:post_id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="15">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def new</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="14">
-            
-            
-
-            
-
-            <code class="ruby">    @like = Like.new</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="15">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
+            <code class="ruby">      @likes_from_user.first.destroy</code>
           </li>
         </div>
       
@@ -1271,67 +1271,56 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
+          <li class="covered" data-hits="7" data-linenumber="17">
+            <span class="hits">7</span>
+            
+
+            
+
+            <code class="ruby">    if request.referrer.include?(&#39;posts/&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="18">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">      redirect_to user_post_path(@post.user, @post)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="19">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    elsif request.referrer.include?(&#39;posts&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def create</code>
+            <code class="ruby">      redirect_to user_posts_path(@post.user)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="18">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    @post = Post.find(params[:post_id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="19">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    @likes_from_user = @post.likes.where(user_id: current_user.id)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="20">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    if @likes_from_user.empty?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="21">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      @likes_from_user.create(user_id: current_user.id, post_id: params[:post_id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="21">
             
             
 
@@ -1342,13 +1331,24 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="23">
+          <li class="covered" data-hits="1" data-linenumber="22">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      redirect_to user_feed_index_path(current_user)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
             
             
 
             
 
-            <code class="ruby">      @likes_from_user.first.destroy</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1359,89 +1359,12 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    #redirect_to request.referrer</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="25">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    if request.referrer.include?(&#39;posts/&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="26">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      redirect_to user_post_path(@post.user, @post)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="27">
-            
-            
-
-            
-
-            <code class="ruby">    elsif request.referrer.include?(&#39;posts&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="28">
-            
-            
-
-            
-
-            <code class="ruby">      redirect_to user_posts_path(@post.user)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby">    else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby">      redirect_to user_feed_index_path(current_user)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="25">
             
             
 
@@ -1452,7 +1375,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="26">
             
             
 
@@ -9773,8 +9696,8 @@
     
 
     <div class="t-line-summary">
-      <b>41</b> relevant lines.
-      <span class="green"><b>41</b> lines covered</span> and
+      <b>55</b> relevant lines.
+      <span class="green"><b>55</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -9819,8 +9742,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="4">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="10" data-linenumber="4">
+            <span class="hits">10</span>
             
 
             
@@ -9830,8 +9753,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="5">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="10" data-linenumber="5">
+            <span class="hits">10</span>
             
 
             
@@ -9852,8 +9775,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="7">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="9" data-linenumber="7">
+            <span class="hits">9</span>
             
 
             
@@ -9863,8 +9786,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="8">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="9" data-linenumber="8">
+            <span class="hits">9</span>
             
 
             
@@ -10116,8 +10039,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="31">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="7" data-linenumber="31">
+            <span class="hits">7</span>
             
 
             
@@ -10138,8 +10061,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="33">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="7" data-linenumber="33">
+            <span class="hits">7</span>
             
 
             
@@ -10364,7 +10287,7 @@
 
             
 
-            <code class="ruby">    context &#39;when user tries to remove someones like&#39; do</code>
+            <code class="ruby">    context &#39;when user likes post which is already liked by user&#39; do</code>
           </li>
         </div>
       
@@ -10375,7 +10298,7 @@
 
             
 
-            <code class="ruby">      let!(:like) { create :like, user: create(:user) }</code>
+            <code class="ruby">      subject { process :create, method: :post, params: params }</code>
           </li>
         </div>
       
@@ -10386,62 +10309,62 @@
 
             
 
-            <code class="ruby">      let(:params) { {id: like.id, user_id: user, post_id: post }}</code>
+            <code class="ruby">      let!(:like) { create :like }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="56">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      it &#39;does not delete the like&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="57">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        subject</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="58">
+          <li class="covered" data-hits="2" data-linenumber="56">
             <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        expect { subject }.to_not change(user.likes, :count)</code>
+            <code class="ruby">      let(:params) { { like: attributes_for(:like), user_id: user, post_id: post } }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="57">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">      end</code>
+            
+
+            <code class="ruby">      before { user.likes.create(user_id: user.id, post_id: post.id) }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="60">
+          <li class="covered" data-hits="1" data-linenumber="58">
+            <span class="hits">1</span>
             
+
+            
+
+            <code class="ruby">      it &#39;deletes the like&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        expect(user.likes.count).to eq 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="60">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        expect { subject }.to change(user.likes, :count).by(-1)</code>
           </li>
         </div>
       
@@ -10452,12 +10375,265 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="63">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="64">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    context &#39;when user likes post on posts page&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="65">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      before { request.env[&#39;HTTP_REFERER&#39;] = &#39;posts/&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &#39;creates a like&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="67">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        expect { subject }.to change(user.likes, :count).by(1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="70">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    context &#39;when user likes post on post page&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="72">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      before { request.env[&#39;HTTP_REFERER&#39;] = &#39;posts&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="73">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &#39;creates a like&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="74">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        expect { subject }.to change(user.likes, :count).by(1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="75">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="76">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="77">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="78">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    context &#39;when user likes post on feed page&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="79">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      before { request.env[&#39;HTTP_REFERER&#39;] = &#39;feed&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="80">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &#39;creates a like&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="81">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        expect { subject }.to change(user.likes, :count).by(1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="83">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="84">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
             
             
 
@@ -11152,7 +11328,7 @@
 
             
 
-            <code class="ruby">    subject { process :create, params: {followed_id: user2 } }</code>
+            <code class="ruby">    subject { process :create, params: { followed_id: user2 } }</code>
           </li>
         </div>
       
@@ -11251,7 +11427,7 @@
 
             
 
-            <code class="ruby">    subject { process :destroy, params: {id: relationship.id } }</code>
+            <code class="ruby">    subject { process :destroy, params: { id: relationship.id } }</code>
           </li>
         </div>
       
@@ -11262,7 +11438,7 @@
 
             
 
-            <code class="ruby">    it &#39;unfollows @user2&#39; do</code>
+            <code class="ruby">    it &#39;unfollows from @user2&#39; do</code>
           </li>
         </div>
       
@@ -11996,8 +12172,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="36" data-linenumber="5">
-            <span class="hits">36</span>
+          <li class="covered" data-hits="39" data-linenumber="5">
+            <span class="hits">39</span>
             
 
             
@@ -12082,8 +12258,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="60" data-linenumber="3">
-            <span class="hits">60</span>
+          <li class="covered" data-hits="63" data-linenumber="3">
+            <span class="hits">63</span>
             
 
             
@@ -12093,8 +12269,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="60" data-linenumber="4">
-            <span class="hits">60</span>
+          <li class="covered" data-hits="63" data-linenumber="4">
+            <span class="hits">63</span>
             
 
             
@@ -12104,8 +12280,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="60" data-linenumber="5">
-            <span class="hits">60</span>
+          <li class="covered" data-hits="63" data-linenumber="5">
+            <span class="hits">63</span>
             
 
             
@@ -12115,8 +12291,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="60" data-linenumber="6">
-            <span class="hits">60</span>
+          <li class="covered" data-hits="63" data-linenumber="6">
+            <span class="hits">63</span>
             
 
             

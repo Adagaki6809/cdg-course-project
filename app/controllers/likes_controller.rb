@@ -6,14 +6,6 @@ class LikesController < ApplicationController
     @likes = Like.all
   end
 
-  def show
-    @like = Like.find(params[:id])
-  end
-
-  def new
-    @like = Like.new
-  end
-
   def create
     @post = Post.find(params[:post_id])
     @likes_from_user = @post.likes.where(user_id: current_user.id)
@@ -29,5 +21,6 @@ class LikesController < ApplicationController
     else
       redirect_to user_feed_index_path(current_user)
     end
+    #redirect_to request.referrer
   end
 end
