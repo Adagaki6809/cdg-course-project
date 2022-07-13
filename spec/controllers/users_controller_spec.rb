@@ -29,4 +29,12 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user)).to be_a_new User
     end
   end
+
+  describe '#show' do
+    subject { process :show, params: { id: user.id } }
+    it 'redirects to users posts page' do
+      subject
+      expect(response).to redirect_to user_posts_path(assigns(:user))
+    end
+  end
 end
